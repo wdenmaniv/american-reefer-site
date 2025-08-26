@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find Us | American Reefer™</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Leaflet (map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin="anonymous">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="brand" href="/">AMERICAN REEFER</a>
+      <nav class="nav">
+        <a class="active" href="/find-us.html">Find Us</a>
+        <a href="/merch.html">Merch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container pad-lg">
+    <h1>Find American Reefer</h1>
+    <p>Available at licensed retailers only. Use the map or search below.</p>
+
+    <div class="store-tools">
+      <input id="store-search" type="search" placeholder="Search city or store…" />
+      <button id="clear-search" class="btn btn-ghost">Clear</button>
+    </div>
+
+    <div class="store-layout">
+      <div id="map" class="store-map" role="application" aria-label="Store map"></div>
+      <ul id="store-list" class="store-list"></ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><strong>Adults 21+ only.</strong> Consume responsibly.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Replace with your real stores later
+    window.ARE_LOCATIONS = [
+      { name: "Evergreen Dispensary", city: "Seattle, WA", lat: 47.6062, lng: -122.3321, url: "#", address: "123 Pine St, Seattle, WA" },
+      { name: "Capitol City Cannabis", city: "Olympia, WA", lat: 47.0379, lng: -122.9007, url: "#", address: "456 State Ave, Olympia, WA" },
+      { name: "Spokane Greens", city: "Spokane, WA", lat: 47.6588, lng: -117.4260, url: "#", address: "789 Riverside Ave, Spokane, WA" }
+    ];
+  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin="anonymous"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

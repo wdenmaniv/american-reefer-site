@@ -1,0 +1,84 @@
+// ---------- Age Gate ----------
+(function(){
+  const gate = document.getElementById('age-gate');
+  if(!gate) return;
+  const yes = document.getElementById('age-yes');
+  const no  = document.getElementById('age-no');
+
+  const KEY = 'are_is21';
+  const is21 = localStorage.getItem(KEY) === 'true';
+
+  const hideGate = () => { gate.style.display = 'none'; };
+  const showGate = () => { gate.style.display = 'flex'; };
+
+  if(is21){ hideGate(); }
+  else { showGate(); }
+
+  yes?.addEventListener('click', () => {
+    localStorage.setItem(KEY, 'true');
+    hideGate();
+  });
+
+  no?.addEventListener('click', () => {
+    alert('Sorry! This site is for adults 21+.'); 
+    window.location.href = 'https://www.responsibility.org/';
+  });
+})();
+
+// ---------- Store Locator (Leaflet) ----------
+(function(){
+  const mapEl = document.getElementById('map');
+  const locations = window.ARE_LOCATIONS || [];
+  if(!mapEl || !locations.length) return;
+
+  const map = L.map('map', { scrollWheelZoom:false }).setView([39.5, -98.35], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'© OpenStreetMap' }).addTo(map);
+
+  const markers = [];
+  const bounds = L.latLngBounds();
+
+  locations.forEach(loc => {
+    const m = L.marker([loc.lat, loc.lng]).addTo(map)
+      .bindPopup(`<strong>${loc.name}</strong><br>${loc.address || ''}<br>${loc.city || ''}${loc.url ? `<br><a href="${loc.url}" target="_blank" rel="noopener">Details</a>`:''}`);
+    markers.push(m);
+    bounds.extend([loc.lat, loc.lng]);
+  });
+
+  if(locations.length > 1){ map.fitBounds(bounds.pad(0.3)); }
+  else { map.setView([locations[0].lat, locations[0].lng], 12); }
+
+  // List + search
+  const listEl = document.getElementById('store-list');
+  const input  = document.getElementById('store-search');
+  const clear  = document.getElementById('clear-search');
+
+  function renderList(filtered = locations){
+    listEl.innerHTML = '';
+    filtered.forEach((loc, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<div><strong>${loc.name}</strong><br><small>${loc.address || ''}${loc.address ? ', ' : ''}${loc.city || ''}</small></div>
+                      ${loc.url ? `<div style="margin-top:6px"><a href="${loc.url}" target="_blank" rel="noopener">View store</a></div>`:''}`;
+      li.addEventListener('click', () => {
+        markers[i]?.openPopup();
+        map.setView([loc.lat, loc.lng], 13);
+      });
+      listEl.appendChild(li);
+    });
+  }
+  renderList();
+
+  input?.addEventListener('input', () => {
+    const q = input.value.toLowerCase().trim();
+    const filtered = locations.filter(l =>
+      (l.name||'').toLowerCase().includes(q) ||
+      (l.city||'').toLowerCase().includes(q) ||
+      (l.address||'').toLowerCase().includes(q)
+    );
+    renderList(filtered);
+  });
+
+  clear?.addEventListener('click', () => {
+    input.value = '';
+    renderList(locations);
+  });
+})();

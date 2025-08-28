@@ -42,7 +42,7 @@ body{
 
 
 .pre-hero-banner { padding-top: 8px; }
-.pre-hero-banner .container { max-height: 720px; }   /* narrower than page max */
+.pre-hero-banner .container { max-height: 540px; }   /* narrower than page max */
 .pre-hero-banner img { border-radius: 14px; display:block; width:100%; height:auto; }
 
 

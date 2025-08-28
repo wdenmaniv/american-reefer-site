@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Evergreen Dispensary",
+    "address": "123 Pine St",
+    "city": "Seattle, WA",
+    "lat": 47.6062,
+    "lng": -122.3321,
+    "url": "https://example.com/seattle"
+  },
+  {
+    "name": "Capitol City Cannabis",
+    "address": "456 State Ave",
+    "city": "Olympia, WA",
+    "lat": 47.0379,
+    "lng": -122.9007,
+    "url": "https://example.com/olympia"
+  },
+  {
+    "name": "Spokane Greens",
+    "address": "789 Riverside Ave",
+    "city": "Spokane, WA",
+    "lat": 47.6588,
+    "lng": -117.4260,
+    "url": "https://example.com/spokane"
+  }
+]

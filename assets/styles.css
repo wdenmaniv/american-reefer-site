@@ -32,7 +32,7 @@ body{
   display: grid;
   grid-template-columns: 1fr auto 1fr; /* left spacer | brand | nav */
   align-items: center;
-  height: 84px;
+  height: 116px;
 }
 .brand{display:inline-flex;gap:10px;align-items:center;text-decoration:none;color:var(--navy);font-family:Anton, sans-serif;letter-spacing:.06em;font-size:20px
   grid-column: 2;

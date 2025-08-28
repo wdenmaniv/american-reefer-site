@@ -37,6 +37,15 @@ body{
 }
 .nav a.active{color:var(--navy);border-bottom:2px solid var(--red);padding-bottom:4px}
 
+.brand-logo{
+  height: 32px;
+  width: auto;
+  display: block;
+}
+@media (min-width: 900px){
+  .brand-logo{ height: 36px; }
+}
+
 /* Hero */
 .hero{
   position:relative;isolation:isolate;color:var(--white);

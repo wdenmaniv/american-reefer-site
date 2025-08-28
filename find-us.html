@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <!-- Leaflet (map) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
 </head>
 <body>
   <header class="site-header">
@@ -17,6 +17,8 @@
       <nav class="nav">
         <a class="active" href="/find-us.html">Find Us</a>
         <a href="/merch.html">Merch</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
       </nav>
     </div>
   </header>
@@ -32,7 +34,9 @@
 
     <div class="store-layout">
       <div id="map" class="store-map" role="application" aria-label="Store map"></div>
-      <ul id="store-list" class="store-list"></ul>
+      <ul id="store-list" class="store-list">
+        <li>Loading locations…</li>
+      </ul>
     </div>
   </main>
 
@@ -42,15 +46,8 @@
     </div>
   </footer>
 
-  <script>
-    // Replace with your real stores later
-    window.ARE_LOCATIONS = [
-      { name: "Evergreen Dispensary", city: "Seattle, WA", lat: 47.6062, lng: -122.3321, url: "#", address: "123 Pine St, Seattle, WA" },
-      { name: "Capitol City Cannabis", city: "Olympia, WA", lat: 47.0379, lng: -122.9007, url: "#", address: "456 State Ave, Olympia, WA" },
-      { name: "Spokane Greens", city: "Spokane, WA", lat: 47.6588, lng: -117.4260, url: "#", address: "789 Riverside Ave, Spokane, WA" }
-    ];
-  </script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
   <script src="/assets/app.js"></script>
 </body>
 </html>
+

@@ -40,6 +40,12 @@ body{
 .brand-flag{color:var(--red)}
 .brand-text{white-space:nowrap}
 
+
+.pre-hero-banner { padding-top: 8px; }
+.pre-hero-banner .container { max-width: 960px; }   /* narrower than page max */
+.pre-hero-banner img { border-radius: 14px; display:block; width:100%; height:auto; }
+
+
 .nav{
   grid-column: 3;
   justify-self: end;

@@ -1,34 +1,3 @@
-// ---------- Age Gate (bulletproof: localStorage + cookie fallback + global handlers) ----------
-(function () {
-  const KEY = 'are_is21';
-
-  function getAccepted() {
-    try { return localStorage.getItem(KEY) === 'true'; }
-    catch { return document.cookie.split('; ').some(p => p.startsWith(KEY + '=true')); }
-  }
-  function setAccepted(val) {
-    try { localStorage.setItem(KEY, String(val)); }
-    catch { document.cookie = `${KEY}=${val}; path=/; max-age=${60*60*24*365}`; }
-  }
-  function hide() { const g = document.getElementById('age-gate'); if (g) g.style.display = 'none'; }
-  function show() { const g = document.getElementById('age-gate'); if (g) g.style.display = 'flex'; }
-
-  // Expose hardwired fallbacks so clicks work even if listeners don’t
-  window.ARE_acceptAge  = function () { setAccepted(true); hide(); return false; };
-  window.ARE_declineAge = function () { alert('Sorry! This site is for adults 21+.'); location.href = 'https://www.responsibility.org/'; return false; };
-
-  const gate = document.getElementById('age-gate');
-  if (!gate) return;
-
-  if (getAccepted()) hide(); else show();
-
-  // Progressive enhancement (nice to have)
-  document.getElementById('age-yes')?.addEventListener('click', (e) => { e.preventDefault(); window.ARE_acceptAge(); });
-  document.getElementById('age-no') ?.addEventListener('click', (e) => { e.preventDefault(); window.ARE_declineAge(); });
-})();
-
-
-
 // ---------- Store Locator (Leaflet + JSON fetch) ----------
 (function(){
   const mapEl  = document.getElementById('map');
@@ -40,7 +9,6 @@
   let map, markers = [], allLocations = [];
 
   function initMap(locations){
-    // Reset if re-initializing
     markers.forEach(m => m.remove());
     markers = [];
 
@@ -92,7 +60,6 @@
     renderList(filtered);
   }
 
-  // Load data
   fetch('/locations.json', { cache: 'no-store' })
     .then(r => r.ok ? r.json() : Promise.reject(new Error('Failed to load locations.json')))
     .then(data => {

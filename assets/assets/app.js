@@ -1,17 +1,44 @@
-// ---------- Age Gate ----------
-(function(){
+// ---------- Age Gate (Safari-safe, cookie fallback) ----------
+(function () {
   const gate = document.getElementById('age-gate');
-  if(!gate) return;
+  if (!gate) return;
+
   const yes = document.getElementById('age-yes');
   const no  = document.getElementById('age-no');
   const KEY = 'are_is21';
-  const is21 = localStorage.getItem(KEY) === 'true';
-  const hideGate = () => { gate.style.display = 'none'; };
-  const showGate = () => { gate.style.display = 'flex'; };
-  if(is21){ hideGate(); } else { showGate(); }
-  yes?.addEventListener('click', () => { localStorage.setItem(KEY,'true'); hideGate(); });
-  no?.addEventListener('click', () => { alert('Sorry! This site is for adults 21+.'); window.location.href='https://www.responsibility.org/'; });
+
+  const storage = {
+    get() {
+      try { return localStorage.getItem(KEY) === 'true'; }
+      catch { // fallback to cookie
+        const v = document.cookie.split('; ').find(r => r.startsWith(KEY + '='))?.split('=')[1];
+        return v === 'true';
+      }
+    },
+    set(val) {
+      try { localStorage.setItem(KEY, String(val)); }
+      catch { document.cookie = `${KEY}=${val}; path=/; max-age=${60 * 60 * 24 * 365}`; }
+    }
+  };
+
+  const hide = () => { gate.style.display = 'none'; };
+  const show = () => { gate.style.display = 'flex'; };
+
+  if (storage.get()) hide(); else show();
+
+  yes?.addEventListener('click', (e) => {
+    e.preventDefault();
+    storage.set(true);
+    hide();
+  });
+
+  no?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Sorry! This site is for adults 21+.'); 
+    window.location.href = 'https://www.responsibility.org/';
+  });
 })();
+
 
 // ---------- Store Locator (Leaflet + JSON fetch) ----------
 (function(){

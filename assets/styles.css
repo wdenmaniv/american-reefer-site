@@ -92,6 +92,35 @@ body{
   display:none
 }
 
+/* Hero product images */
+.hero-products{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  margin: 12px 0 16px;
+}
+.hero-prod{
+  height: 180px;               /* desktop size */
+  width: auto;
+  max-width: 45vw;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.12));
+}
+
+/* tighten spacing before the buttons when images are present */
+.hero-products + .cta-row{ margin-top: 12px; }
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  .hero-prod{ height: 150px; max-width: 70vw; }
+}
+@media (max-width: 600px){
+  .hero-products{ flex-direction: column; gap: 12px; }
+  .hero-prod{ height: 160px; max-width: 80vw; }
+}
+
+
 /* Buttons */
 .btn{
   appearance:none;border:none;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;

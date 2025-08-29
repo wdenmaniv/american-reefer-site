@@ -142,7 +142,8 @@ body{
 .stats-desc{
   margin: 18px auto 0;
   text-align: center;
-  font-weight: 700;
+  font-weight: 400;
+  opacity: .92;
   color: var(--ink);
   max-width: 980px;
 }

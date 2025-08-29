@@ -132,8 +132,12 @@ body{
   .hero-products .hero-prod:first-child{ height: 120px; }  /* from 150px → 120px */
 }
 @media (max-width: 600px){
-  .hero-products{ gap: 16px; }                 /* stacked */
-  .hero-products .hero-prod:first-child{ height: 120px; }
+  .hero-products{
+    flex-direction: column;   /* keep stacked */
+    align-items: center;      /* <-- center horizontally */
+    gap: 16px;
+  }
+  .hero-prod{ margin: 0 auto; }
 }
 
 

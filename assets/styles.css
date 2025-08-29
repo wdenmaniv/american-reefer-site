@@ -121,10 +121,10 @@ body{
 }
 
 /* Tweak hero product images */
-.hero-products{ gap: 48px; }                  /* twice the current spacing */
+.hero-products{ gap: 72px; }                  /* twice the current spacing */
 
 /* make the pre-roll (first image) ~25% smaller */
-.hero-products .hero-prod:first-child{ height: 135px; }  /* 180px → 135px */
+.hero-products .hero-prod:first-child{ height: 100px; }  
 
 /* responsive sizes to keep the ratio on smaller screens */
 @media (max-width: 900px){

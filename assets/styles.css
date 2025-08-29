@@ -120,6 +120,22 @@ body{
   .hero-prod{ height: 160px; max-width: 80vw; }
 }
 
+/* Tweak hero product images */
+.hero-products{ gap: 48px; }                  /* twice the current spacing */
+
+/* make the pre-roll (first image) ~25% smaller */
+.hero-products .hero-prod:first-child{ height: 135px; }  /* 180px → 135px */
+
+/* responsive sizes to keep the ratio on smaller screens */
+@media (max-width: 900px){
+  .hero-products{ gap: 32px; }
+  .hero-products .hero-prod:first-child{ height: 120px; }  /* from 150px → 120px */
+}
+@media (max-width: 600px){
+  .hero-products{ gap: 16px; }                 /* stacked */
+  .hero-products .hero-prod:first-child{ height: 120px; }
+}
+
 
 /* Buttons */
 .btn{

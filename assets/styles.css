@@ -121,7 +121,7 @@ body{
 }
 
 /* Tweak hero product images */
-.hero-products{ gap: 72px; }                  /* twice the current spacing */
+.hero-products{ gap: 160px; }                  /* twice the current spacing */
 
 /* make the pre-roll (first image) ~25% smaller */
 .hero-products .hero-prod:first-child{ height: 100px; }  

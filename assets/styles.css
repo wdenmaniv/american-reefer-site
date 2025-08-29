@@ -101,7 +101,16 @@ body{
 .btn-primary:hover{filter:brightness(.95)}
 .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.75);color:var(--white)}
 .btn-ghost:hover{border-color:#fff}
-.btn-outline{background:transparent;border:2px solid var(--ink-2);color:var(--ink)}
+.btn-outline{
+  background: transparent;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+.btn-outline:hover{
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
 
 /* Feature cards */
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding:36px 20px}
